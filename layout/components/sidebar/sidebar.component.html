@@ -1,0 +1,128 @@
+<div class="sidebar-content">
+  <!-- Header -->
+  <div class="sidebar-header">
+    <div class="logo">
+      <div class="logo-icon">K</div>
+      <div class="logo-text">
+        <span class="logo-brand">Karmed</span>
+        <span class="logo-subtitle">Academy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sidebar-nav">
+    <!-- Home -->
+    <a
+      routerLink="/home"
+      class="nav-item"
+      [class.active]="isSelected('home', 0)"
+      (click)="selectItem('home', 0)"
+      [title]="'SIDEBAR.HOME' | translate"
+    >
+      <div class="nav-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </svg>
+      </div>
+      <span class="nav-text">{{ "SIDEBAR.HOME" | translate }}</span>
+    </a>
+
+    <!-- Categories -->
+    <ng-container *ngFor="let category of categories">
+      <!-- Ana kategori (alt kategorisi olan) -->
+      <ng-container
+        *ngIf="category.subCategories && category.subCategories.length > 0"
+      >
+        <!-- Ana kategori header'ı -->
+        <div
+          class="nav-item category-parent"
+          [class.expanded]="isCategoryExpanded(category.categoryId)"
+          (click)="onCategoryClick(category, $event)"
+        >
+          <div class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+              />
+            </svg>
+          </div>
+          <span class="nav-text">{{ category.name }}</span>
+          <div class="nav-arrow">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              [class.rotated]="isCategoryExpanded(category.categoryId)"
+            >
+              <path
+                d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Alt kategoriler -->
+        <div
+          class="subcategory-container"
+          [class.expanded]="isCategoryExpanded(category.categoryId)"
+        >
+          <a
+            *ngFor="let subCategory of category.subCategories"
+            routerLink="/category"
+            [queryParams]="{ id: idToUrlQuery(subCategory.categoryId) }"
+            class="nav-item subcategory-item"
+            [class.active]="isSelected('category', subCategory.categoryId)"
+            (click)="selectItem('category', subCategory.categoryId)"
+            [title]="subCategory.name"
+          >
+            <div class="nav-icon subcategory-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <span class="nav-text">{{ subCategory.name }}</span>
+          </a>
+        </div>
+      </ng-container>
+
+      <!-- Tekil kategori (alt kategorisi olmayan) -->
+      <a
+        *ngIf="!category.subCategories || category.subCategories.length === 0"
+        routerLink="/category"
+        [queryParams]="{ id: idToUrlQuery(category.categoryId) }"
+        class="nav-item"
+        [class.active]="isSelected('category', category.categoryId)"
+        (click)="selectItem('category', category.categoryId)"
+        [title]="category.name"
+      >
+        <div class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+            />
+          </svg>
+        </div>
+        <span class="nav-text">{{ category.name }}</span>
+      </a>
+    </ng-container>
+  </nav>
+
+  <!-- Footer -->
+  <div class="sidebar-footer">
+    <div class="user-card">
+      <img
+        src="assets/image/SidebarDoctorFotoErkek.jpeg"
+        alt="User"
+        class="user-avatar"
+      />
+      <div class="user-info">
+        <div class="user-name">
+          {{ "SIDEBAR.SUGGESTION_CARD.LINE1" | translate }}
+        </div>
+        <div class="user-role">
+          {{ "SIDEBAR.SUGGESTION_CARD.LINE2" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

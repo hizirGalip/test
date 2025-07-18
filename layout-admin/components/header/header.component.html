@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="header-left">
+    <button
+      class="menu-toggle"
+      (click)="toggleSidebar()"
+      mat-icon-button
+      matTooltip="Menü"
+    >
+      <i class="bi bi-list"></i>
+    </button>
+  </div>
+
+  <div class="header-spacer"></div>
+
+  <div class="header-right">
+    <div class="language-selector">
+      <select
+        class="language-dropdown"
+        [(ngModel)]="currentLang"
+        (ngModelChange)="switchLanguage($event)"
+      >
+        <option value="tr">🇹🇷 Türkçe</option>
+        <option value="uz">🇺🇿 O'zbekcha</option>
+        <option value="ru">🇷🇺 Русский</option>
+      </select>
+    </div>
+
+    <div class="header-actions">
+      <button class="action-button admin" matTooltip="Ana Sayfa" routerLink="/">
+        <i class="bi bi-house-door"></i>
+      </button>
+
+      <button
+        class="action-button danger"
+        matTooltip="Çıkış Yap"
+        (click)="logout()"
+      >
+        <i class="bi bi-box-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</header>

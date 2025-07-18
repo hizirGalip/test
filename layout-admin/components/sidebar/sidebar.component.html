@@ -1,0 +1,339 @@
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-content">
+      <div class="logo-icon">K</div>
+      <div class="logo-text">
+        <div class="logo-brand">KarMed</div>
+        <div class="logo-title">
+          {{ "ADMIN_SIDEBAR.LOGO.TITLE" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('categories')">
+        <span>{{ "ADMIN_SIDEBAR.CATEGORIES.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['categories']"
+        ></i>
+      </div>
+      <div class="nav-items" [class.collapsed]="!sectionStates['categories']">
+        @for(item of items1; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items1', i)"
+          (click)="selectItem('items1', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('users')">
+        <span>{{ "ADMIN_SIDEBAR.USERS.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['users']"
+        ></i>
+      </div>
+      <div class="nav-items" [class.collapsed]="!sectionStates['users']">
+        @for(item of items2; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items2', i)"
+          (click)="selectItem('items2', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('roles')">
+        <span>{{ "ADMIN_SIDEBAR.ROLES.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['roles']"
+        ></i>
+      </div>
+      <div class="nav-items" [class.collapsed]="!sectionStates['roles']">
+        @for(item of items3; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items3', i)"
+          (click)="selectItem('items3', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('institutions')">
+        <span>{{ "ADMIN_SIDEBAR.INSTITUTIONS.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['institutions']"
+        ></i>
+      </div>
+      <div class="nav-items" [class.collapsed]="!sectionStates['institutions']">
+        @for(item of items4; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items4', i)"
+          (click)="selectItem('items4', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('authorization')">
+        <span>{{ "ADMIN_SIDEBAR.AUTHORIZATION.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['authorization']"
+        ></i>
+      </div>
+      <div
+        class="nav-items"
+        [class.collapsed]="!sectionStates['authorization']"
+      >
+        @for(item of items5; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items5', i)"
+          (click)="selectItem('items5', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('contents')">
+        <span>{{ "ADMIN_SIDEBAR.CONTENTS.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['contents']"
+        ></i>
+      </div>
+      <div class="nav-items" [class.collapsed]="!sectionStates['contents']">
+        @for(item of items6; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items6', i)"
+          (click)="selectItem('items6', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('tags')">
+        <span>{{ "ADMIN_SIDEBAR.TAGS.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['tags']"
+        ></i>
+      </div>
+      <div class="nav-items" [class.collapsed]="!sectionStates['tags']">
+        @for(item of items7; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items7', i)"
+          (click)="selectItem('items7', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('topics')">
+        <span>{{ "ADMIN_SIDEBAR.TOPICS.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['topics']"
+        ></i>
+      </div>
+      <div class="nav-items" [class.collapsed]="!sectionStates['topics']">
+        @for(item of items8; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items8', i)"
+          (click)="selectItem('items8', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('ratings')">
+        <span>{{ "ADMIN_SIDEBAR.RATINGS.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['ratings']"
+        ></i>
+      </div>
+      <div class="nav-items" [class.collapsed]="!sectionStates['ratings']">
+        @for(item of items9; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items9', i)"
+          (click)="selectItem('items9', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('comments')">
+        <span>{{ "ADMIN_SIDEBAR.COMMENTS.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['comments']"
+        ></i>
+      </div>
+      <div class="nav-items" [class.collapsed]="!sectionStates['comments']">
+        @for(item of items10; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items10', i)"
+          (click)="selectItem('items10', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('notifications')">
+        <span>{{ "ADMIN_SIDEBAR.NOTIFICATIONS.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['notifications']"
+        ></i>
+      </div>
+      <div
+        class="nav-items"
+        [class.collapsed]="!sectionStates['notifications']"
+      >
+        @for(item of items11; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items11', i)"
+          (click)="selectItem('items11', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-header" (click)="toggleSection('userProfiles')">
+        <span>{{ "ADMIN_SIDEBAR.USER_PROFILES.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['userProfiles']"
+        ></i>
+      </div>
+      <div class="nav-items" [class.collapsed]="!sectionStates['userProfiles']">
+        @for(item of items12; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items12', i)"
+          (click)="selectItem('items12', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div
+        class="nav-section-header"
+        (click)="toggleSection('programSettings')"
+      >
+        <span>{{ "ADMIN_SIDEBAR.PROGRAM_SETTINGS.TITLE" | translate }}</span>
+        <i
+          class="bi bi-chevron-down section-toggle"
+          [class.rotated]="!sectionStates['programSettings']"
+        ></i>
+      </div>
+      <div
+        class="nav-items"
+        [class.collapsed]="!sectionStates['programSettings']"
+      >
+        @for(item of items13; track item; let i = $index){
+        <a
+          *isPermit="item.permit"
+          [routerLink]="item.link"
+          class="nav-item"
+          [class.selected]="isSelected('items13', i)"
+          (click)="selectItem('items13', i)"
+        >
+          <span class="nav-item-text">{{ item.title | translate }}</span>
+          <div class="status-indicator"></div>
+        </a>
+        }
+      </div>
+    </div>
+  </nav>
+</div>

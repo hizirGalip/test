@@ -1,0 +1,301 @@
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background: #141414;
+}
+
+/* Header */
+.sidebar-header {
+  background: #e50914;
+  padding: 20px;
+  color: white;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-brand {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: #ffffff;
+}
+
+.logo-subtitle {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+/* Navigation */
+.sidebar-nav {
+  flex: 1;
+  padding: 24px 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+
+/* Base nav item styles */
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  gap: 16px;
+  position: relative;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #e50914;
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.nav-item.active {
+  background: rgba(229, 9, 20, 0.15);
+  color: white;
+}
+
+.nav-item.active::before {
+  transform: scaleY(1);
+}
+
+/* Ana kategori özel stilleri */
+.nav-item.category-parent {
+  font-weight: 600;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &.expanded {
+    background: rgba(229, 9, 20, 0.1);
+    color: #e50914;
+  }
+}
+
+/* Chevron arrow */
+.nav-arrow {
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotate(0deg);
+
+    &.rotated {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+/* Alt kategori container */
+.subcategory-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.expanded {
+    max-height: 500px; // Alt kategoriler için yeterli yükseklik
+  }
+}
+
+/* Alt kategori öğeleri */
+.subcategory-item {
+  padding-left: 56px; // Ana kategoriden daha içeride
+  font-size: 13px;
+  color: #aaa;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ddd;
+  }
+
+  &.active {
+    background: rgba(229, 9, 20, 0.12);
+    color: #e50914;
+  }
+
+  &.active::before {
+    background: #e50914;
+    transform: scaleY(1);
+  }
+}
+
+.subcategory-icon {
+  width: 16px;
+  height: 16px;
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Icon styles */
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.nav-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+/* Footer */
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid #333;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  border: 1px solid #333;
+  transition: all 0.2s ease;
+}
+
+.user-card:hover {
+  border-color: #e50914;
+  background: #222;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-role {
+  font-size: 11px;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Animasyon iyileştirmeleri */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subcategory-container.expanded .subcategory-item {
+  animation: slideDown 0.2s ease-out;
+  animation-fill-mode: both;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .nav-text {
+    font-size: 13px;
+  }
+
+  .subcategory-item {
+    padding-left: 48px;
+    font-size: 12px;
+  }
+}
