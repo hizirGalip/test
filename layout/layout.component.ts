@@ -10,7 +10,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-layout',
-  standalone: true,
   imports: [
     RouterOutlet,
     HeaderComponent,
@@ -19,14 +18,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule,
+    MatListModule
   ],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.scss',
+  styleUrl: './layout.component.scss'
 })
 export class LayoutComponent implements AfterViewInit {
-  @ViewChild('drawer') drawer?: any;
-  sidebarOpen = false;
+  @ViewChild("drawer") drawer?: any;
 
   ngAfterViewInit(): void {
     // this.toggle();
@@ -35,14 +33,5 @@ export class LayoutComponent implements AfterViewInit {
 
   toggle() {
     this.drawer?.toggle();
-  }
-
-  toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
-    console.log('Sidebar toggled:', this.sidebarOpen); // Debug için
-  }
-
-  closeSidebar() {
-    this.sidebarOpen = false;
   }
 }

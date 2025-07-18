@@ -1,99 +1,46 @@
 <header class="header">
   <div class="header-left">
-    <!-- Menu Toggle -->
-    <button class="menu-toggle" (click)="onMenuClick()">
+    <button
+      class="menu-toggle"
+      (click)="toggleSidebar()"
+      mat-icon-button
+      matTooltip="Menü"
+    >
       <i class="bi bi-list"></i>
     </button>
-
-    <!-- Logo -->
-    <div class="logo">
-      <span class="logo-text">Education</span>
-      <span class="logo-subtitle">CubeBox</span>
-    </div>
-
-    <!-- Search -->
-    <div class="search-container">
-      <div class="search-box">
-        <i class="bi bi-search search-icon"></i>
-        <input
-          type="text"
-          class="search-input"
-          [placeholder]="'HEADER.SEARCH_PLACEHOLDER' | translate"
-          (keyup)="applyFilter($event)"
-          #input
-        />
-      </div>
-    </div>
   </div>
 
-  <div class="header-right">
-    <!-- Language -->
-    <select
-      class="language-select"
-      [(ngModel)]="currentLang"
-      (ngModelChange)="switchLanguage($event)"
-    >
-      <option value="tr">🇹🇷 Türkçe</option>
-      <option value="uz">🇺🇿 O'zbekcha</option>
-      <option value="rus">🇷🇺 Русский</option>
-    </select>
+  <div class="header-spacer"></div>
 
-    <!-- Actions -->
+  <div class="header-right">
+    <div class="language-selector">
+      <select
+        class="language-dropdown"
+        [(ngModel)]="currentLang"
+        (ngModelChange)="switchLanguage($event)"
+      >
+        <option value="tr">🇹🇷 Türkçe</option>
+        <option value="uz">🇺🇿 O'zbekcha</option>
+        <option value="ru">🇷🇺 Русский</option>
+      </select>
+    </div>
+
     <div class="header-actions">
-      <button class="action-btn admin" routerLink="/admin">
+      <button
+        class="action-button admin"
+        matTooltip="Admin Panel"
+        routerLink="/admin"
+      >
         <i class="bi bi-person-gear"></i>
       </button>
 
       <button
-        class="action-btn notification"
-        [matMenuTriggerFor]="notificationMenu"
+        class="action-button danger"
+        matTooltip="Güvenli Çıkış"
+        (click)="logout()"
       >
-        <i class="bi bi-bell"></i>
-        <span *ngIf="hasUnreadNotifications" class="badge"></span>
-      </button>
-
-      <button class="action-btn profile" [matMenuTriggerFor]="profileMenu">
-        <i class="bi bi-person-circle"></i>
+        <i class="bi bi-box-arrow-right"></i>
       </button>
     </div>
   </div>
-
-  <!-- Notification Menu -->
-  <mat-menu #notificationMenu="matMenu" class="notification-menu">
-    <div class="menu-header">Bildirimler</div>
-    <div class="notification-list" *ngIf="!loading; else loadingTemplate">
-      <div
-        *ngFor="let notification of notifications"
-        class="notification-item"
-        [class.unread]="!notification.isRead"
-        (click)="markAsRead(notification.notificationId)"
-      >
-        <h4>{{ notification.title }}</h4>
-        <p>{{ notification.message }}</p>
-        <small>{{ formatDate(notification.notificationDate) }}</small>
-      </div>
-    </div>
-    <ng-template #loadingTemplate>
-      <div class="loading">
-        <mat-spinner diameter="30"></mat-spinner>
-      </div>
-    </ng-template>
-  </mat-menu>
-
-  <!-- Profile Menu -->
-  <mat-menu #profileMenu="matMenu" class="profile-menu">
-    <button mat-menu-item>
-      <i class="bi bi-person"></i>
-      <span>Profil</span>
-    </button>
-    <button mat-menu-item>
-      <i class="bi bi-gear"></i>
-      <span>Ayarlar</span>
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item (click)="logout()" class="logout-item">
-      <i class="bi bi-box-arrow-right"></i>
-      <span>{{ "HEADER.LOGOUT" | translate }}</span>
-    </button>
-  </mat-menu>
 </header>

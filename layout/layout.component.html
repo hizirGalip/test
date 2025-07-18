@@ -1,21 +1,9 @@
-<div class="layout-container">
-  <!-- Sidebar -->
-  <aside class="sidebar" [class.open]="sidebarOpen">
-    <app-sidebar></app-sidebar>
-  </aside>
-
-  <!-- Main Content -->
-  <div class="main-content">
-    <app-header (menuClick)="toggleSidebar()"></app-header>
-    <main class="content-area">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-
-  <!-- Overlay -->
-  <div
-    class="sidebar-overlay"
-    [class.active]="sidebarOpen"
-    (click)="closeSidebar()"
-  ></div>
-</div>
+<mat-drawer-container fullscreen >
+  <mat-drawer #drawer mode="side" style="box-shadow: none; border: none;" [opened]="true">
+    <app-sidebar [drawer]="drawer"></app-sidebar>
+  </mat-drawer>
+  <mat-drawer-content style="background-color: #F4F6F8; color: black;">
+    <app-header [drawer]="drawer"></app-header>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
