@@ -1,0 +1,61 @@
+<!-- <mat-tab-group #tabGroup animationDuration="0ms"> -->
+<!-- <mat-tab [label]="'SURVEY_PROCEDURES.SURVEYS' | translate">
+    <app-survey></app-survey>
+  </mat-tab>
+  <mat-tab [label]="'SURVEY_PROCEDURES.ADD_QUESTION_TO_SURVEY' | translate">
+    <app-survey-question></app-survey-question>
+  </mat-tab>
+  <mat-tab [label]="'SURVEY_PROCEDURES.QUESTIONS' | translate">
+    <app-question></app-question>
+  </mat-tab>
+  <mat-tab [label]="'SURVEY_PROCEDURES.QUESTIONS_AND_OPTIONS' | translate"
+    ><app-question-option></app-question-option
+  ></mat-tab>
+  <mat-tab [label]="'SURVEY_PROCEDURES.QUESTION_ATTACHMENT' | translate"
+    ><app-question-attachment-list></app-question-attachment-list>
+  </mat-tab>
+  <mat-tab [label]="'SURVEY_PROCEDURES.QUESTION_OPTION_ATTACHMENT' | translate"
+    ><app-question-option-attachment-list></app-question-option-attachment-list>
+  </mat-tab> -->
+<!-- <mat-tab [label]="'SURVEY_PROCEDURES.SURVEY_FILES' | translate">
+    <app-survey-attachment></app-survey-attachment>
+  </mat-tab> -->
+<!-- <mat-tab [label]="'SURVEY_PROCEDURES.SURVEY_USERS' | translate">
+    <app-survey-user></app-survey-user>
+  </mat-tab> -->
+<!-- <mat-tab [label]="'SURVEY_PROCEDURES.SURVEY_RESPONSES' | translate">
+    <app-survey-response></app-survey-response>
+  </mat-tab> -->
+<!-- </mat-tab-group> -->
+<!-- <div class="navigation-buttons">
+  <button
+    mat-button
+    (click)="previousTab()"
+    [disabled]="selectedTabIndex === 0"
+  >
+    <mat-icon>arrow_back</mat-icon> {{ 'NAVIGATION.BACK' | translate }}
+  </button>
+  <button
+    mat-button
+    (click)="nextTab()"
+    [disabled]="selectedTabIndex === tabGroup._tabs.length - 1"
+  >
+    {{ 'NAVIGATION.NEXT' | translate }} <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div> -->
+<div class="mt-3">
+  <div
+    style="
+      width: 100%;
+      background-color: #f0f1f3;
+      border: 2px solid #ffffff;
+      height: 50px;
+      border-radius: 5px;
+    "
+  >
+    <h4 style="margin-left: 20px; margin-top: 8px">
+      {{ "Warning" | translate }}
+    </h4>
+  </div>
+  <app-survey-response></app-survey-response>
+</div>

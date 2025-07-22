@@ -1,0 +1,593 @@
+<div class="survey-create-page">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="title-section">
+        <h1 class="page-title">{{ "Anketler" | translate }}</h1>
+        <p class="page-subtitle">Anket oluştur ve sorularını düzenle</p>
+      </div>
+
+      <!-- Survey Selector -->
+      <div class="survey-selector">
+        <div class="selector-wrapper">
+          <label class="selector-label">Anket Seçin</label>
+          <select
+            class="form-select custom-select"
+            [(ngModel)]="selectedSurveyId"
+            (change)="onSurveyChange($event)"
+          >
+            <option [value]="''">{{ "BUTTONS.NEW_SURVEY" | translate }}</option>
+            <option *ngFor="let survey of surveys" [value]="survey.surveyId">
+              {{ survey.title }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="main-container">
+    <div class="content-grid">
+      <!-- Left Panel - Survey Form -->
+      <div class="survey-form-panel">
+        <div class="panel-header">
+          <div class="panel-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                fill="currentColor"
+                opacity="0.2"
+              />
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M14 2v6h6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="panel-title">
+            <h2>Anket Bilgileri</h2>
+            <p>Temel anket ayarlarını yapılandırın</p>
+          </div>
+        </div>
+
+        <div class="panel-content">
+          <form [formGroup]="formSurvey" class="survey-form">
+            <!-- Survey Title -->
+            <div class="form-group">
+              <label class="form-label">
+                <span class="label-text">{{
+                  "SURVEY_ADD.SURVEY_TITLE" | translate
+                }}</span>
+                <span class="label-required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <input
+                  class="form-control modern-input"
+                  id="formSurveyTitle"
+                  formControlName="title"
+                  placeholder="Anket başlığını giriniz..."
+                />
+              </div>
+            </div>
+
+            <!-- Survey Description -->
+            <div class="form-group">
+              <label class="form-label">
+                <span class="label-text">{{
+                  "SURVEY_ADD_2.DESCRIPTION" | translate
+                }}</span>
+              </label>
+              <div class="input-wrapper">
+                <textarea
+                  class="form-control modern-textarea"
+                  id="formSurveyDesc"
+                  rows="4"
+                  formControlName="description"
+                  placeholder="Anket açıklamasını giriniz..."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Date Range -->
+            <div class="form-row">
+              <div class="form-group half-width">
+                <label class="form-label">
+                  <span class="label-text">{{
+                    "SURVEY_ADD_2.START_DATE" | translate
+                  }}</span>
+                  <span class="label-required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <input
+                    type="datetime-local"
+                    class="form-control modern-input"
+                    id="formSurveyStartDate"
+                    formControlName="startDate"
+                    required
+                  />
+                  <div class="input-icon">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path
+                        d="M5 2V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-1V1a1 1 0 1 0-2 0v1H5z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <small class="form-text error-text"
+                  >Tarih ve saat alanı zorunludur</small
+                >
+              </div>
+
+              <div class="form-group half-width">
+                <label class="form-label">
+                  <span class="label-text">{{
+                    "SURVEY_ADD_2.END_DATE" | translate
+                  }}</span>
+                  <span class="label-required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <input
+                    type="datetime-local"
+                    class="form-control modern-input"
+                    id="formSurveyEndDate"
+                    formControlName="endDate"
+                    required
+                  />
+                  <div class="input-icon">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path
+                        d="M5 2V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-1V1a1 1 0 1 0-2 0v1H5z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <small class="form-text error-text"
+                  >Tarih ve saat alanı zorunludur</small
+                >
+              </div>
+            </div>
+
+            <!-- Survey Type -->
+            <div class="form-group">
+              <label class="form-label">
+                <span class="label-text">{{
+                  "SURVEY_ADD_2.SURVEY_TYPE" | translate
+                }}</span>
+              </label>
+              <div class="select-wrapper">
+                <select
+                  class="form-select modern-select"
+                  formControlName="surveyType"
+                >
+                  <option [value]="1">
+                    {{ "SURVEY_ADD.TYPE_1" | translate }}
+                  </option>
+                  <option [value]="2">
+                    {{ "SURVEY_ADD.TYPE_2" | translate }}
+                  </option>
+                  <option [value]="3">
+                    {{ "SURVEY_ADD.TYPE_3" | translate }}
+                  </option>
+                  <option [value]="4">
+                    {{ "SURVEY_ADD.TYPE_4" | translate }}
+                  </option>
+                </select>
+                <div class="select-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M4 6l4 4 4-4"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Panel - Questions -->
+      <div class="questions-panel">
+        <div class="panel-header">
+          <div class="panel-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.2" />
+              <path
+                d="M12 1v6m0 6v6m11-7h-6m-6 0H1"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div class="panel-title">
+            <h2>Anket Soruları</h2>
+            <p>Sorularını ekle ve düzenle</p>
+          </div>
+        </div>
+
+        <div class="panel-content">
+          <div class="questions-container">
+            <mat-accordion class="modern-accordion" multi>
+              @for (question of questions; track $index) {
+              <mat-expansion-panel
+                class="question-panel"
+                (opened)="loadQuestionOptions($index)"
+              >
+                <mat-expansion-panel-header class="panel-header-custom">
+                  <mat-panel-title class="panel-title-custom">
+                    <div class="question-number">{{ $index + 1 }}</div>
+                    <span class="question-label"
+                      >{{ "QUESTION.NUMBER" | translate }}{{ $index + 1 }}</span
+                    >
+                  </mat-panel-title>
+                  <button
+                    mat-icon-button
+                    class="delete-question-btn"
+                    matTooltip="{{ 'QUESTION.DELETE' | translate }}"
+                    (click)="$event.stopPropagation(); deleteQuestion($index)"
+                  >
+                    <mat-icon class="delete-icon">delete</mat-icon>
+                  </button>
+                </mat-expansion-panel-header>
+
+                <div class="question-content">
+                  <div class="question-layout">
+                    <!-- Question Section -->
+                    <div class="question-section">
+                      <div class="section-header">
+                        <h3 class="section-title">
+                          {{ "QUESTION.TITLE" | translate }}
+                        </h3>
+                      </div>
+
+                      <div class="question-fields">
+                        <mat-form-field
+                          appearance="outline"
+                          class="question-input"
+                        >
+                          <mat-label>{{
+                            "QUESTION.TEXT" | translate
+                          }}</mat-label>
+                          <input
+                            matInput
+                            [(ngModel)]="question.question!.questionText"
+                            placeholder="Soru metnini giriniz..."
+                            required
+                          />
+                        </mat-form-field>
+
+                        <mat-form-field
+                          appearance="outline"
+                          class="question-type"
+                        >
+                          <mat-label>{{
+                            "QUESTION.TYPE" | translate
+                          }}</mat-label>
+                          <mat-select
+                            [(ngModel)]="question.question!.questionType"
+                            (selectionChange)="onQuestionTypeChange($index)"
+                            required
+                          >
+                            <mat-option [value]="1">{{
+                              "QUESTION.TYPE_1" | translate
+                            }}</mat-option>
+                            <mat-option [value]="2">{{
+                              "QUESTION.TYPE_2" | translate
+                            }}</mat-option>
+                            <mat-option [value]="3">{{
+                              "QUESTION.TYPE_3" | translate
+                            }}</mat-option>
+                            <mat-option [value]="4">{{
+                              "QUESTION.TYPE_4" | translate
+                            }}</mat-option>
+                            <mat-option [value]="5">{{
+                              "QUESTION.TYPE_5" | translate
+                            }}</mat-option>
+                            <mat-option [value]="6">{{
+                              "QUESTION.TYPE_6" | translate
+                            }}</mat-option>
+                            <mat-option [value]="7">{{
+                              "QUESTION.TYPE_7" | translate
+                            }}</mat-option>
+                            <mat-option [value]="8">{{
+                              "QUESTION.TYPE_8" | translate
+                            }}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+
+                      <!-- File Upload for Question -->
+                      <div
+                        *ngIf="
+                          isFileUploadType(
+                            question!.question?.questionType ?? 1
+                          )
+                        "
+                        class="file-upload-section"
+                      >
+                        <div class="upload-header">
+                          <h4 class="upload-title">
+                            {{ "OPTION.ADD_IMAGE" | translate }}
+                          </h4>
+                        </div>
+
+                        <ngx-dropzone
+                          (change)="onQuestionFileSelect($index, $event)"
+                          [multiple]="false"
+                          [maxFileSize]="10 * 1024 * 1024"
+                          accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/jpeg,image/png,video/mp4,video/quicktime,video/webm,video/ogg"
+                          class="modern-dropzone"
+                        >
+                          <ngx-dropzone-label>
+                            <div class="dropzone-content">
+                              <div class="upload-icon">
+                                <svg
+                                  width="32"
+                                  height="32"
+                                  viewBox="0 0 32 32"
+                                  fill="none"
+                                >
+                                  <path
+                                    d="M16 2L16 22M8 14L16 22L24 14"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </div>
+                              <h3 class="upload-text">
+                                {{ "FILE_UPLOAD.DRAG_DROP" | translate }}
+                              </h3>
+                              <span class="upload-subtitle">{{
+                                "FILE_UPLOAD.MAX_SIZE" | translate
+                              }}</span>
+                            </div>
+                          </ngx-dropzone-label>
+
+                          <ngx-dropzone-preview
+                            *ngFor="let f of questionFiles"
+                            [removable]="true"
+                          >
+                            <ngx-dropzone-label>{{
+                              f.name
+                            }}</ngx-dropzone-label>
+                          </ngx-dropzone-preview>
+                        </ngx-dropzone>
+
+                        <div
+                          *ngIf="
+                            question.questionAttachment &&
+                            question.questionAttachment.preview
+                          "
+                          class="file-preview"
+                        >
+                          <img
+                            [src]="question.questionAttachment.preview"
+                            alt="{{ 'FILE_UPLOAD.PREVIEW' | translate }}"
+                            class="preview-image"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Options Section -->
+                    <div
+                      *ngIf="requiresOptions($index)"
+                      class="options-section"
+                    >
+                      <div class="section-header">
+                        <h3 class="section-title">
+                          {{ "OPTION.TITLE" | translate }}
+                        </h3>
+                        <button
+                          type="button"
+                          mat-stroked-button
+                          class="add-option-btn"
+                          (click)="addOption($index)"
+                        >
+                          <mat-icon>add</mat-icon>
+                          {{ "OPTION.ADD" | translate }}
+                        </button>
+                      </div>
+
+                      <div class="options-list">
+                        <div
+                          *ngFor="let option of question.options; let i = index"
+                          class="option-item"
+                        >
+                          <div class="option-header">
+                            <mat-form-field
+                              appearance="outline"
+                              class="option-text-field"
+                            >
+                              <mat-label>{{
+                                "OPTION.TEXT" | translate
+                              }}</mat-label>
+                              <input
+                                matInput
+                                [(ngModel)]="option.optionText"
+                                placeholder="Seçenek metnini giriniz..."
+                                required
+                              />
+                            </mat-form-field>
+
+                            <div class="option-controls">
+                              <mat-checkbox
+                                [(ngModel)]="option.includeAttachment"
+                                class="attachment-checkbox"
+                              >
+                                {{ "OPTION.ADD_IMAGE" | translate }}
+                              </mat-checkbox>
+
+                              <button
+                                type="button"
+                                mat-icon-button
+                                class="delete-option-btn"
+                                matTooltip="{{ 'OPTION.DELETE' | translate }}"
+                                (click)="removeOption($index, i)"
+                              >
+                                <mat-icon>delete</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+
+                          <!-- Option File Upload -->
+                          <div
+                            *ngIf="option?.includeAttachment"
+                            class="option-file-upload"
+                          >
+                            <ngx-dropzone
+                              (change)="onOptionFileSelect($index, $event, i)"
+                              [multiple]="false"
+                              [maxFileSize]="10 * 1024 * 1024"
+                              accept="image/jpeg,image/png"
+                              class="modern-dropzone option-dropzone"
+                            >
+                              <ngx-dropzone-label>
+                                <div class="dropzone-content">
+                                  <div class="upload-icon small">
+                                    <svg
+                                      width="24"
+                                      height="24"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M12 2L12 16M6 10L12 16L18 10"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                      />
+                                    </svg>
+                                  </div>
+                                  <span class="upload-text">{{
+                                    "FILE_UPLOAD.DRAG_DROP" | translate
+                                  }}</span>
+                                </div>
+                              </ngx-dropzone-label>
+
+                              <ngx-dropzone-preview
+                                *ngFor="let f of getOptionFiles(i)"
+                                [removable]="true"
+                              >
+                                <ngx-dropzone-label>{{
+                                  f.name
+                                }}</ngx-dropzone-label>
+                              </ngx-dropzone-preview>
+                            </ngx-dropzone>
+
+                            <div
+                              *ngIf="
+                                question.optionAttachments &&
+                                question.optionAttachments[i] &&
+                                question.optionAttachments[i].preview
+                              "
+                              class="file-preview"
+                            >
+                              <img
+                                [src]="question.optionAttachments[i].preview"
+                                alt="{{ 'FILE_UPLOAD.PREVIEW' | translate }}"
+                                class="preview-image"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              }
+            </mat-accordion>
+
+            <!-- Empty State -->
+            <div *ngIf="questions!.length === 0" class="empty-questions-state">
+              <div class="empty-icon">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                  <circle
+                    cx="32"
+                    cy="32"
+                    r="30"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    opacity="0.3"
+                  />
+                  <path
+                    d="M32 20v12m0 8h.01"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3 class="empty-title">Henüz soru eklenmemiş</h3>
+              <p class="empty-description">
+                Anketinize soru eklemek için aşağıdaki butonu kullanın
+              </p>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button
+              mat-fab
+              class="action-btn add-question"
+              matTooltip="{{ 'QUESTION.ADD' | translate }}"
+              (click)="addQuestion()"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+
+            <button
+              mat-fab
+              class="action-btn save-survey"
+              matTooltip="{{ 'BUTTONS.SAVE' | translate }}"
+              (click)="save()"
+            >
+              <mat-icon>save</mat-icon>
+            </button>
+
+            <button
+              mat-fab
+              class="action-btn delete-survey"
+              matTooltip="{{ 'BUTTONS.DELETE_SURVEY' | translate }}"
+              (click)="removeSurvey()"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <ngx-spinner
+    bdColor="rgba(0, 0, 0, 0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-clip-rotate"
+    [fullScreen]="true"
+  >
+    <p style="color: white">{{ "LOADING" | translate }}</p>
+  </ngx-spinner>
+</div>
