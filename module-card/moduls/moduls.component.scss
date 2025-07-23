@@ -1,0 +1,94 @@
+.video-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .video-js {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    object-fit: contain;
+  }
+
+  .video-js .vjs-control-bar {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+  }
+
+  // Yeni eklenen kontrol butonları stilleri
+  .custom-video-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .custom-control-button {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    opacity: 0;
+
+    .icon {
+      color: white;
+      font-size: 18px;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+      transform: scale(1.1);
+    }
+  }
+
+  &:hover .custom-control-button {
+    opacity: 1;
+  }
+}
+
+// Responsive düzenlemeler
+@media (max-width: 768px) {
+  .custom-control-button {
+    width: 35px !important;
+    height: 35px !important;
+
+    .icon {
+      font-size: 16px !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-control-button {
+    width: 30px !important;
+    height: 30px !important;
+
+    .icon {
+      font-size: 14px !important;
+    }
+  }
+}

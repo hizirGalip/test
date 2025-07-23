@@ -1,0 +1,353 @@
+.container-fluid {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.row {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.col-lg-12,
+.col-md-12 {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+// Main Lesson Card - Netflix Episode Style
+.card {
+  background: linear-gradient(135deg, #333333 0%, #262626 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  margin: 0 0 16px 0 !important;
+  cursor: pointer !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  overflow: hidden !important;
+  position: relative !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  width: 100% !important;
+  min-height: 120px !important;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(229, 9, 20, 0.1) 0%,
+      rgba(229, 9, 20, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+
+    transform: translateX(8px) scale(1.02) !important;
+    box-shadow: 0 8px 40px rgba(229, 9, 20, 0.25) !important;
+    border-color: rgba(229, 9, 20, 0.4) !important;
+
+    .card-body-alt {
+      img {
+        transform: scale(1.08) !important;
+        box-shadow: 0 8px 24px rgba(229, 9, 20, 0.4) !important;
+      }
+
+      .content-title,
+      div[style*="font-size: 16px"] {
+        color: #e50914 !important;
+        text-shadow: 0 2px 8px rgba(229, 9, 20, 0.5) !important;
+      }
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  // Netflix episode indicator
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, #e50914 0%, #b20710 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &:focus {
+    outline: 2px solid #e50914 !important;
+    outline-offset: 2px !important;
+  }
+
+  &:active {
+    transform: translateX(4px) scale(1.01) !important;
+  }
+}
+
+// Card Body Layout - Netflix Episode Row
+.card-body-alt {
+  display: flex !important;
+  align-items: center !important;
+  padding: 20px !important;
+  background: transparent !important;
+  height: auto !important;
+  min-height: 100px !important;
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+
+  // Episode Thumbnail
+  img {
+    border-radius: 8px !important;
+    height: 80px !important;
+    width: 120px !important;
+    margin: 0 20px 0 0 !important;
+    object-fit: cover !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6) !important;
+    background: linear-gradient(135deg, #444 0%, #222 100%) !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+
+    &::after {
+      content: "▶";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(229, 9, 20, 0.9);
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 16px rgba(229, 9, 20, 0.5);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 3;
+    }
+  }
+
+  &:hover img::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  // Content Info Section
+  .content-info {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-height: 80px !important;
+    padding-right: 16px !important;
+  }
+
+  // Episode Title
+  .content-title {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8) !important;
+    transition: all 0.3s ease !important;
+    letter-spacing: -0.3px !important;
+  }
+
+  // Episode Description
+  .content-description {
+    font-size: 15px !important;
+    color: #b3b3b3 !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    letter-spacing: 0.1px !important;
+    opacity: 0.9 !important;
+  }
+
+  // Override inline styles for legacy support
+  div[style*="font-size: 16px"] {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8) !important;
+    transition: all 0.3s ease !important;
+    letter-spacing: -0.3px !important;
+  }
+
+  div[style*="color: gray"] {
+    font-size: 15px !important;
+    color: #b3b3b3 !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    letter-spacing: 0.1px !important;
+    opacity: 0.9 !important;
+  }
+
+  // Remove legacy inline styles override
+  div[style] {
+    background: transparent !important;
+  }
+}
+
+// Episode Number Badge (optional)
+.card-body-alt::before {
+  content: attr(data-episode) !important;
+  position: absolute !important;
+  left: -5px !important;
+  top: 20px !important;
+  background: linear-gradient(135deg, #e50914 0%, #b20710 100%) !important;
+  color: white !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  padding: 4px 8px !important;
+  border-radius: 0 6px 6px 0 !important;
+  min-width: 24px !important;
+  text-align: center !important;
+  opacity: 0 !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+}
+
+.card:hover .card-body-alt::before {
+  opacity: 1 !important;
+  left: 0 !important;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .card {
+    min-height: 100px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .card-body-alt {
+    padding: 16px !important;
+    min-height: 80px !important;
+
+    img {
+      height: 70px !important;
+      width: 100px !important;
+      margin-right: 16px !important;
+
+      &::after {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 14px !important;
+      }
+    }
+
+    .content-title,
+    div[style*="font-size: 16px"] {
+      font-size: 18px !important;
+      margin-bottom: 6px !important;
+    }
+
+    .content-description,
+    div[style*="color: gray"] {
+      font-size: 14px !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    min-height: 90px !important;
+    margin-bottom: 10px !important;
+    border-radius: 8px !important;
+  }
+
+  .card-body-alt {
+    padding: 14px !important;
+    min-height: 70px !important;
+
+    img {
+      height: 60px !important;
+      width: 85px !important;
+      margin-right: 14px !important;
+      border-radius: 6px !important;
+
+      &::after {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 12px !important;
+      }
+    }
+
+    .content-title,
+    div[style*="font-size: 16px"] {
+      font-size: 16px !important;
+      margin-bottom: 4px !important;
+    }
+
+    .content-description,
+    div[style*="color: gray"] {
+      font-size: 13px !important;
+    }
+  }
+}
+
+// Animation for card entrance
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card {
+  animation: slideInRight 0.6s ease-out !important;
+}
+
+// Focus accessibility
+.card[tabindex] {
+  &:focus-visible {
+    outline: 3px solid #e50914 !important;
+    outline-offset: 4px !important;
+  }
+}
+
+// Remove any conflicting bootstrap or legacy styles
+.p-3 {
+  padding: 0 !important;
+}
+
+.justify-content-start {
+  justify-content: flex-start !important;
+}
+
+// Loading states override
+.loading-overlay {
+  display: none !important;
+}
+
+ngx-spinner {
+  display: none !important;
+}

@@ -1,0 +1,508 @@
+body,
+html {
+  background: #141414 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Netflix Sans", "Helvetica Neue", Arial, sans-serif !important;
+  min-height: 100vh !important;
+}
+
+// Main wrapper container
+.video-page-wrapper {
+  background: #141414 !important;
+  padding: 20px !important;
+  min-height: calc(100vh - 40px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+// Top section - Video + Lessons
+.video-lessons-container {
+  display: flex !important;
+  gap: 20px !important;
+  margin: 0 !important;
+
+  // Video player container (left side)
+  .modul-container {
+    margin: 0 !important;
+    width: 74% !important;
+    height: 700px !important;
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    position: relative !important;
+  }
+
+  // Lessons sidebar (right side)
+  .lessons-sidebar {
+    margin: 0 !important;
+    width: 24% !important;
+    background: transparent !important;
+    padding: 0 !important;
+
+    .card {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 16px !important;
+
+      .lessons-body {
+        color: #fff !important;
+        text-align: left !important;
+
+        .lessons-container {
+          width: 100% !important;
+          margin-top: 0 !important;
+          border-radius: 16px !important;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+          overflow-y: auto !important;
+          overflow-x: hidden !important;
+          height: 700px !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+          background: linear-gradient(
+            135deg,
+            #1a1a1a 0%,
+            #141414 100%
+          ) !important;
+          padding: 20px !important;
+
+          // Custom Netflix scrollbar
+          &::-webkit-scrollbar {
+            width: 8px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #e50914 0%, #b20710 100%);
+            border-radius: 4px;
+
+            &:hover {
+              background: linear-gradient(180deg, #ff0a1a 0%, #c8081a 100%);
+            }
+          }
+
+          .lessons-header {
+            height: 0 !important;
+            margin: 0 !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Comments section - positioned below video
+.comments-section {
+  width: 74% !important;
+  margin: 0 !important;
+
+  .comments-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+
+    &:hover {
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.8) !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .comments-body {
+      padding: 30px !important;
+      background: transparent !important;
+      color: #fff !important;
+      min-height: 400px !important;
+      max-height: 600px !important;
+      overflow-y: auto !important;
+
+      // Custom scrollbar for comments
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #e50914 0%, #b20710 100%);
+        border-radius: 4px;
+
+        &:hover {
+          background: linear-gradient(180deg, #ff0a1a 0%, #c8081a 100%);
+        }
+      }
+
+      // Comments header
+      .comments-header {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 25px !important;
+        padding-bottom: 15px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+        h3 {
+          color: #fff !important;
+          font-weight: 600 !important;
+          margin: 0 !important;
+          font-size: 24px !important;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .comments-count {
+          background: rgba(229, 9, 20, 0.2) !important;
+          color: #e50914 !important;
+          padding: 4px 12px !important;
+          border-radius: 20px !important;
+          font-size: 14px !important;
+          font-weight: 600 !important;
+          margin-left: 15px !important;
+        }
+      }
+
+      // Individual comment styles
+      .comment-item {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 12px !important;
+        padding: 20px !important;
+        margin-bottom: 15px !important;
+        transition: all 0.3s ease !important;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.08) !important;
+          border-color: rgba(255, 255, 255, 0.12) !important;
+        }
+
+        .comment-author {
+          font-weight: 600 !important;
+          color: #e50914 !important;
+          margin-bottom: 8px !important;
+          font-size: 16px !important;
+        }
+
+        .comment-text {
+          color: #b3b3b3 !important;
+          line-height: 1.6 !important;
+          margin-bottom: 12px !important;
+          font-size: 15px !important;
+        }
+
+        .comment-date {
+          color: #666 !important;
+          font-size: 13px !important;
+          font-weight: 400 !important;
+        }
+      }
+
+      // Add comment form
+      .add-comment-form {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
+        padding: 20px !important;
+        margin-top: 20px !important;
+
+        .form-group {
+          margin-bottom: 15px !important;
+
+          label {
+            color: #fff !important;
+            font-weight: 600 !important;
+            margin-bottom: 8px !important;
+            display: block !important;
+          }
+
+          input,
+          textarea {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 8px !important;
+            color: #fff !important;
+            padding: 12px 16px !important;
+            width: 100% !important;
+            font-size: 14px !important;
+            font-family: inherit !important;
+            resize: vertical !important;
+
+            &:focus {
+              border-color: #e50914 !important;
+              box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.3) !important;
+              outline: none !important;
+            }
+
+            &::placeholder {
+              color: #b3b3b3 !important;
+            }
+          }
+
+          textarea {
+            min-height: 100px !important;
+          }
+        }
+
+        .comment-submit-btn {
+          background: linear-gradient(
+            135deg,
+            #e50914 0%,
+            #b20710 100%
+          ) !important;
+          border: none !important;
+          color: white !important;
+          padding: 12px 24px !important;
+          border-radius: 8px !important;
+          font-weight: 600 !important;
+          font-size: 14px !important;
+          cursor: pointer !important;
+          transition: all 0.3s ease !important;
+
+          &:hover {
+            background: linear-gradient(
+              135deg,
+              #ff0a1a 0%,
+              #c8081a 100%
+            ) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 16px rgba(229, 9, 20, 0.4) !important;
+          }
+
+          &:active {
+            transform: translateY(0) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Evaluation section (bottom)
+.evaluation-section {
+  width: 100% !important;
+  margin: 0 !important;
+
+  .evaluation-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+
+    &:hover {
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.8) !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .evaluation-body {
+      padding: 30px !important;
+      background: transparent !important;
+      color: #fff !important;
+      min-height: 130px !important;
+
+      // Style any headings
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: #fff !important;
+        font-weight: 600 !important;
+        margin-bottom: 20px !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+      }
+
+      // Style any text content
+      p {
+        color: #b3b3b3 !important;
+        line-height: 1.6 !important;
+        margin-bottom: 16px !important;
+      }
+
+      // Style any buttons
+      button {
+        background: linear-gradient(
+          135deg,
+          #e50914 0%,
+          #b20710 100%
+        ) !important;
+        border: none !important;
+        color: white !important;
+        padding: 12px 24px !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+
+        &:hover {
+          background: linear-gradient(
+            135deg,
+            #ff0a1a 0%,
+            #c8081a 100%
+          ) !important;
+          transform: translateY(-2px) !important;
+          box-shadow: 0 4px 16px rgba(229, 9, 20, 0.4) !important;
+        }
+      }
+
+      // Style any form elements
+      input,
+      textarea,
+      select {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 8px !important;
+        color: #fff !important;
+        padding: 12px 16px !important;
+
+        &:focus {
+          border-color: #e50914 !important;
+          box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.3) !important;
+          outline: none !important;
+        }
+
+        &::placeholder {
+          color: #b3b3b3 !important;
+        }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .video-lessons-container {
+    .modul-container {
+      width: 70% !important;
+    }
+
+    .lessons-sidebar {
+      width: 28% !important;
+    }
+  }
+
+  .comments-section {
+    width: 70% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-page-wrapper {
+    padding: 10px !important;
+    gap: 15px !important;
+  }
+
+  .video-lessons-container {
+    flex-direction: column !important;
+
+    .modul-container {
+      width: 100% !important;
+      height: 400px !important;
+    }
+
+    .lessons-sidebar {
+      width: 100% !important;
+
+      .lessons-body .lessons-container {
+        height: 300px !important;
+        padding: 16px !important;
+      }
+    }
+  }
+
+  .comments-section {
+    width: 100% !important;
+
+    .comments-card .comments-body {
+      padding: 20px !important;
+      min-height: 300px !important;
+      max-height: 500px !important;
+
+      .comments-header h3 {
+        font-size: 20px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .video-page-wrapper {
+    padding: 5px !important;
+    gap: 10px !important;
+  }
+
+  .video-lessons-container {
+    .modul-container {
+      height: 300px !important;
+      border-radius: 12px !important;
+    }
+
+    .lessons-sidebar .lessons-body .lessons-container {
+      height: 250px !important;
+      border-radius: 12px !important;
+      padding: 12px !important;
+    }
+  }
+
+  .comments-section .comments-card {
+    .comments-body {
+      padding: 15px !important;
+
+      .comments-header {
+        margin-bottom: 20px !important;
+
+        h3 {
+          font-size: 18px !important;
+        }
+      }
+
+      .comment-item {
+        padding: 15px !important;
+      }
+
+      .add-comment-form {
+        padding: 15px !important;
+      }
+    }
+  }
+}
+
+// Custom focus states for accessibility
+.modul-container:focus-within {
+  outline-offset: 4px !important;
+}
+
+.lessons-container:focus-within,
+.comments-card:focus-within {
+  border-color: rgba(229, 9, 20, 0.5) !important;
+}
+
+// Smooth transitions for all interactive elements
+* {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+// Netflix loading animation
+@keyframes netflixPulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.loading {
+  animation: netflixPulse 2s ease-in-out infinite !important;
+}

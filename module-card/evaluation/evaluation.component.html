@@ -1,0 +1,72 @@
+<div class="comment-container">
+  <div *ngIf="contentDetails" class="content-header">
+    <div class="title">{{ contentDetails.title }}</div>
+  </div>
+
+  <div *ngIf="contentDetails" class="content-info">
+    <div class="category">Kategori: {{ contentDetails.categoryName }}</div>
+    <div class="description">Konu: {{ contentDetails.description }}</div>
+    <div *ngIf="contentDetails.fileNameWithExtension" class="file-info">
+      Dosya Adı: {{ contentDetails.fileNameWithExtension }}
+    </div>
+  </div>
+
+  <div *ngIf="!contentDetails">
+    {{ "BANNER.ERROR" | translate }}
+  </div>
+
+  <div class="comment-input-section">
+    <div class="input-wrapper">
+      <textarea
+        [formControl]="commentControl"
+        placeholder="{{ 'COMMENT_PLACEHOLDER' | translate }}"
+        class="comment-textarea"
+      ></textarea>
+      <button
+        class="send-btn"
+        [disabled]="!commentControl.value"
+        (click)="onCommentSubmit()"
+      >
+        <img
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 24 24'%3E%3Cpath d='M2,21L23,12L2,3V10L17,12L2,14V21Z'/%3E%3C/svg%3E"
+          alt="{{ 'SEND_COMMENT' | translate }}"
+        />
+      </button>
+    </div>
+  </div>
+
+  <div class="comments-section">
+    <h2>{{ "COMMENTS" | translate }}</h2>
+
+    <div class="loading" style="display: none">
+      {{ "LOADING_COMMENTS" | translate }}
+    </div>
+
+    <div class="error-message" style="display: none">
+      {{ errorMessage }}
+    </div>
+
+    <div
+      *ngIf="!isLoading && !errorMessage && comments.length === 0"
+      class="no-comments"
+    >
+      {{ "NO_COMMENTS" | translate }}
+    </div>
+
+    <div class="comments-list">
+      <div *ngFor="let comment of comments" class="comment">
+        <div class="comment-header">
+          <div class="comment-author">
+            {{ comment.firstName }} {{ comment.lastName }}
+          </div>
+          <div class="comment-date">
+            {{ comment.createDate | date : "dd.MM.yyyy HH:mm" }}
+          </div>
+        </div>
+        <div class="comment-text">
+          {{ comment.text }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

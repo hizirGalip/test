@@ -1,0 +1,63 @@
+<div *ngIf="isLoading" class="loading-spinner">
+  {{ "VIDEO.LOADING" | translate }}
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
+<div class="video-container">
+  <video
+    id="videoPlayer"
+    #videoPlayer
+    class="video-js vjs-default-skin"
+    controls
+    preload="auto"
+    width="100%"
+    height="100%"
+  >
+    {{ "VIDEO.NOT_SUPPORTED" | translate }}
+  </video>
+
+  <!-- Özel kontrol butonları -->
+  <div class="custom-video-controls">
+    <button class="custom-control-button rewind" (click)="skipBackward()">
+      <img
+        class="icon"
+        matListItemIcon
+        src="assets/image/caret-left.svg"
+        alt="My Icon"
+        style="
+          height: 28px;
+          width: 28px;
+          filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg)
+            brightness(100%) contrast(100%);
+        "
+      />
+    </button>
+    <button class="custom-control-button forward" (click)="skipForward()">
+      <img
+        class="icon"
+        matListItemIcon
+        src="assets/image/caret-right.svg"
+        alt="My Icon"
+        style="
+          height: 28px;
+          width: 28px;
+          filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg)
+            brightness(100%) contrast(100%);
+        "
+      />
+    </button>
+  </div>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-clip-rotate"
+  [fullScreen]="true"
+>
+  <p style="color: white">{{ "VIDEO.LOADING_DETAILS" | translate }}</p>
+</ngx-spinner>

@@ -1,0 +1,83 @@
+<!-- <div
+  class="container-fluid"
+  style="margin-left: -6px; margin-bottom: -15px; margin-top: -20px"
+>
+  <div class="row justify-content-start p-3">
+    <div class="col-lg-12 col-md-12">
+      <div
+        class="card"
+        style="border-radius: 6px; padding: 10px; margin-right: -10px"
+      >
+        <div class="card-body-alt" style="display: flex; align-items: center">
+          <img
+            [src]="getContentImage(card.contentId)"
+            alt="{{ card.title }}"
+            [routerLink]="['/moduleCard']"
+            [queryParams]="{ contentId: getQuery(card.contentId) }"
+            style="
+              border-radius: 6px;
+              height: 75px;
+              width: 90px;
+              margin-left: -10px;
+              margin-right: 10px;
+            "
+          />
+          <div>
+            <div style="font-size: 16px; font-weight: 500">
+              {{ card.title }}
+            </div>
+            <div style="font-size: 14px; color: gray">
+              {{ card.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container-fluid">
+  <div class="row justify-content-start p-3">
+    <div class="col-lg-12 col-md-12">
+      <div class="card" tabindex="0" onclick="navigateToModule()">
+        <div class="card-body-alt">
+          <img
+            [src]="getContentImage(card.contentId)"
+            alt="{{ card.title }}"
+            [routerLink]="['/moduleCard']"
+            [queryParams]="{ contentId: getQuery(card.contentId) }"
+            style="
+              border-radius: 6px;
+              height: 75px;
+              width: 90px;
+              margin-left: -10px;
+              margin-right: 10px;
+            "
+          />
+          <div class="content-info">
+            <div class="content-title">{{ card.title }}</div>
+            <div class="content-description">
+              {{ card.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Loading Spinner (hidden by default) -->
+<div class="loading-overlay" style="display: none">
+  <div class="spinner"></div>
+  <div class="loading-text">Tüm Eğitimler Yükleniyor...</div>
+</div>
+
+<!-- <ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.5)"
+  size="medium"
+  color="#fff"
+  type="ball-clip-rotate"
+  [fullScreen]="true"
+>
+  <p style="color: white">Tüm Eğitimler Yükleniyor...</p>
+</ngx-spinner> -->

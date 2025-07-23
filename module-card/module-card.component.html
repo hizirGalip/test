@@ -1,0 +1,28 @@
+<div class="video-page-wrapper">
+  <div class="video-lessons-container">
+    <div class="modul-container">
+      <app-moduls></app-moduls>
+    </div>
+
+    <div class="lessons-sidebar">
+      <div class="card">
+        <div class="lessons-body">
+          <div class="lessons-container">
+            <div class="lessons-header"></div>
+            <div *ngFor="let card of contents">
+              <app-lessons [card]="card"></app-lessons>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comments-section">
+    <div class="comments-card">
+      <div class="comments-body">
+        <app-evaluation></app-evaluation>
+      </div>
+    </div>
+  </div>
+</div>
