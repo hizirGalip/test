@@ -1,0 +1,31 @@
+.add-category-button {
+  background-color: #ffffff;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  margin-right: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .add-icon {
+    height: 25px;
+    width: 25px;
+    filter: invert(59%) sepia(58%) saturate(447%) hue-rotate(118deg) brightness(96%) contrast(95%);
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .add-icon {
+    transform: rotate(90deg);
+  }
+}
